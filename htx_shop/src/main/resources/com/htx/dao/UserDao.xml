@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htx.dao.UserDao">
+
+    <resultMap id="userDetail" type="user">
+        <id column="username" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="headimg" property="headImg"/>
+        <collection property="orders" column="username" select="com.htx.dao.OrderDao.findByUserName" ofType="order"/>
+        <collection property="addresses" column="username" select="com.htx.dao.AddressDao.findByUserName" ofType="address"/>
+    </resultMap>
+
+    
+    <insert id="save" parameterType="user">
+        insert into user(username, password, phone, email, headimg)
+        values(#{userName}, #{password}, #{phone}, #{email}, #{headImg})
+    </insert>
+
+    <select id="findByName" parameterType="string" resultMap="userDetail">
+        select * from user where username = #{userName}
+    </select>
+
+    <select id="findAll" resultType="user">
+        select * from user
+    </select>
+
+    <delete id="delete" parameterType="string">
+        delete from user where username = #{userName}
+    </delete>
+
+    <update id="update" parameterType="user">
+        update user set password = #{password}, phone = #{phone},
+        email = #{email}, headimg = #{headImg}
+        where addressid = #{addressId}
+    </update>
+</mapper>

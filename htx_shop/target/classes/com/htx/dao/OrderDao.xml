@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htx.dao.OrderDao">
+
+    <resultMap id="orderAndBook" type="order">
+        <id column="orderid" property="orderId"/>
+        <result column="username" property="userName"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+        <result column="bookid" property="bookId"/>
+        <result column="booknumber" property="bookNumber"/>
+        <result column="cost" property="cost"/>
+        <result column="bookimg" property="bookImg"/>
+
+        <association property="book" column="bookid" select="com.htx.dao.BookDao.findById" javaType="book"/>
+
+    </resultMap>
+
+    <insert id="save" parameterType="order">
+        insert into `order`(username, phone, address, state, bookid, booknumber, cost, bookimg)
+        values(#{userName}, #{phone}, #{address}, #{state},
+        #{bookId}, #{bookNumber}, #{cost}, #{bookImg})
+    </insert>
+
+    <select id="findAll" resultType="order">
+        select * from `order`
+    </select>
+
+    <select id="findByPage" resultMap="orderAndBook">
+        select * from `order` where username = #{0} limit #{1}, #{2}
+    </select>
+
+    <select id="findByPageAndState" resultMap="orderAndBook">
+        select * from `order` where username = #{0} and state = #{3} limit #{1}, #{2}
+    </select>
+
+    <select id="findById" parameterType="int" resultMap="orderAndBook">
+        select * from `order` where orderid = #{orderId}
+    </select>
+
+    <select id="findByUserName" parameterType="string" resultMap="orderAndBook">
+        select * from `order` where username = #{userName}
+    </select>
+
+    <select id="findByBookId" resultMap="orderAndBook">
+        select * from `order`
+        where username = #{userName} and bookid in
+        <foreach item="book" collection="books" open="(" separator="," close=")">
+            #{book.bookId}
+        </foreach>
+    </select>
+    
+    <delete id="delete" parameterType="int">
+        delete from `order` where orderid = #{orderId}
+    </delete>
+
+    <update id="update" parameterType="order">
+        update `order` set username = #{userName}, phone = #{phone},
+        address = #{address}, state = #{state}, bookid = #{bookId},
+        booknumber = #{bookNumber}, cost = #{cost}, bookimg = #{bookImg}
+        where bookid = #{bookId}
+    </update>
+</mapper>

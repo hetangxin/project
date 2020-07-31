@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--    <settings>-->
+<!--        &lt;!&ndash;开启Mybatis的sql执行相关信息打印&ndash;&gt;-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+<!--    </settings>-->
+
+    <!-- 使用typeAliases配置别名，只能配置model中的类的别名 -->
+    <typeAliases>
+        <!-- type属性指定的是全限定类名，alias指定类的别名，当指定了别名之后就不再区分大小写 -->
+        <!--        <typeAlias type="com.htx.model.User" alias="user"/>-->
+
+        <!-- 用于指定要配置别名的包，当指定后，该包下类的别名就是类名，不区分大小写 -->
+        <package name="com.htx.model"/>
+    </typeAliases>
+</configuration>

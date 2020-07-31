@@ -1,0 +1,14 @@
+.photo {
+    margin-bottom: 10px;
+    border-radius: 50% !important;
+    display: block !important;
+    float: left !important;
+    margin-right: 10px !important;
+    overflow: hidden !important;
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.headImg {
+    width: 90px !important; height: 90px !important;
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htx.dao.BookDao">
+
+    <insert id="save" parameterType="book">
+        insert into books(bookname, price, stock, author, bookImg)
+        values(#{bookName}, #{price}, #{stock}, #{author}, #{bookImg})
+    </insert>
+
+    <select id="findAll" resultType="book">
+        select * from books
+    </select>
+
+    <select id="findById" parameterType="int" resultType="book">
+        select * from books where bookid = #{bookId}
+    </select>
+
+    <select id="findByName" parameterType="string" resultType="book">
+        select * from books where bookname like concat('%', #{bookName}, '%')
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from books where bookid = #{bookId}
+    </delete>
+
+    <update id="update" parameterType="book">
+        update books set bookname = #{bookName}, price = #{price},
+        stock = #{stock}, author = #{author}, bookImg = #{bookImg}
+        where bookid = #{bookId}
+    </update>
+
+</mapper>

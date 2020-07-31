@@ -1,0 +1,190 @@
+#box{
+	width: 1000px;
+	margin: 50px auto;
+	padding: 0 20px;
+	border: 1px solid rgb(191, 191, 191);
+}
+#heard{
+	padding: 5px 0;
+}
+#heard:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+#heard .heardfuhao{
+	font-weight: 100;
+	color: #b1acb0;
+}
+#heard span{
+	margin-right: 15px;
+	font-size: 18px;
+	font-weight: bold;
+}
+#heard #heardlast{
+	margin-top: 4px;
+	font-weight: 100;
+	font-size: 12px;
+	float: right;
+}
+.boderx{
+	border: 1px solid #b1acb0;
+	margin-bottom: 7px;
+}
+.tr1{
+	background-color: #e6e6e6;
+}
+.td1{
+	width: 400px;
+}
+.td2{
+	width: 70px;
+}
+.td3{
+	width: 70px;
+}
+.td4{
+	width: 120px;
+}
+.td5{
+	width: 120px;
+}
+.td6{
+	width: 120px;
+}
+.td7{
+	width: 120px;
+}
+.td8{
+	width: 120px;
+}
+#center:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+#btn1{
+	float: right;
+}
+
+.imgstyle{
+	width: 80px;
+	height: 80px;
+}
+.imgs{
+	float: left;
+}
+
+/*个人信息*/
+.person-info{
+	width: 80%;
+	height: 250px;
+	margin: 30px auto 0;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #e4e0d7;
+	/*border: 1px solid #ccc;*/
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.person-info p{
+	font-size: 15px;
+	margin-top: 10px;
+	color: #695c4c;
+	position: relative;
+	font-weight: 600;
+
+}
+
+.person-info a{
+	text-decoration: none;
+	color: #26291d;
+	font-size: 16px;
+}
+
+
+.person-info .name{
+	width: 150px;
+	height: 50px;
+	padding: 10px 100px;
+	background-color: #66756b;
+	color: white;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.set{
+	width: 18%;
+	display: flex;
+	justify-content: flex-end;
+	top: -25%;
+	right: -40%;
+	margin: 0px !important;
+}
+
+.edit{
+	width: 125px;
+	height: 28px;
+	padding:3px 16px;
+	border: 2px solid #66756b;
+	border-radius: 4px;
+	font-size: 13px !important;
+	text-align: center;
+	min-width: 125px;
+	max-width: 150px;
+	margin-right: 2px;
+	transition: all 0.5s;
+}
+
+.edit:hover{
+	background-color: #66756b;
+	color: white;
+}
+
+.set-icon{
+	width: 29px;
+	height: 29px;
+}
+
+.person-info .sex{
+	line-height: 36px;
+	/*margin-top: 15px;*/
+	margin-left: -15px;
+	color: #4b4d52;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.person-info #sex-pic{
+	width: 27px;
+	height: 27px;
+	margin-top: 5px;
+	margin-left: 5px;
+	position: absolute;
+}
+
+.person-info .contact{
+	height: 280px;
+	width:100%;
+	margin-bottom: 10px;
+	background-color: #fafafa;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-indent: 40%;
+	padding-bottom: 15px;
+}
+
+.address-icon,
+.call-icon,
+.major-icon {
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	background-position: center;
+	position: absolute;
+	left: 37.1%;
+	top:-10%;
+}
