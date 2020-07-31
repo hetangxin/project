@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meeting.dao.ApplyDao">
+
+    <resultMap id="meetingRoomApply" type="com.meeting.model.Apply">
+        <id column="meeting_id" property="meeting_id"/>
+        <result column="meetingroom_id" property="meetingroom_id"/>
+        <result column="start_time" property="start_time"/>
+        <result column="end_time" property="end_time"/>
+        <result column="userid" property="userId"/>
+        <result column="state" property="state"/>
+        <collection property="meetingRooms" column="meetingroom_id" select="com.meeting.dao.MeetingRoomDao.findById" ofType="meetingRoom"/>
+    </resultMap>
+    
+    <select id="findAllAndState" resultMap="meetingRoomApply">
+        select * from apply where state = '1' or state = '0' order by start_time
+    </select>
+
+    <select id="findById" resultMap="meetingRoomApply">
+        select * from apply where meeting_id = #{id} order by start_time
+    </select>
+
+    <select id="findByUserIdAndState" resultMap="meetingRoomApply">
+        select * from apply where userid = #{id} and state = '0' order by start_time
+    </select>
+
+    <select id="findByState" resultMap="meetingRoomApply">
+        select * from apply where state = '0' order by start_time
+    </select>
+
+    <select id="findByUserId" resultMap="meetingRoomApply">
+        select * from apply where userid = #{id} order by start_time
+    </select>
+
+    <select id="findByTime" resultMap="meetingRoomApply">
+        select * from apply where start_time &lt;= #{0} and end_time &gt;= #{1} order by start_time
+    </select>
+
+    <select id="findByMeetingRoomId" resultMap="meetingRoomApply">
+        select * from apply where meetingroom_id = #{meetingRoomId} order by start_time
+    </select>
+
+    <delete id="delete">
+        delete from apply where meeting_id = #{id}
+    </delete>
+
+    <delete id="deleteByMeetingRoomId">
+        delete from apply where meetingroom_id = #{meetingRoomId}
+    </delete>
+
+    <delete id="deleteByUserId">
+        delete from apply where userid = #{userId}
+    </delete>
+
+    <insert id="save" parameterType="apply" useGeneratedKeys="true" keyProperty="meeting_id">
+        insert into apply(meetingroom_id, start_time, end_time, userid, state)
+        values(#{meetingroom_id}, #{start_time}, #{end_time}, #{userId}, #{state})
+    </insert>
+
+    <update id="update" parameterType="apply">
+        update apply set start_time = #{start_time}, end_time = #{end_time}, userid = #{userId},
+                         state = #{state} where meeting_id = #{meeting_id}
+    </update>
+
+</mapper>

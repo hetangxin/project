@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meeting.dao.MeetingRoomDao">
+
+    <select id="findAll" resultType="meetingRoom">
+        select * from meetingroom
+    </select>
+
+    <select id="findById" resultType="meetingRoom">
+        select * from meetingroom where meetingroom_id = #{meetingRoomId}
+    </select>
+
+    <select id="findByName" resultType="meetingRoom">
+        select * from meetingroom where meetingroom_Name = #{meetingRoomName}
+    </select>
+
+    <select id="findNotInId" resultType="meetingRoom">
+        select * from meetingroom where meetingroom_id not in
+        <foreach item="id" collection="list" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <delete id="delete">
+        delete from meetingroom where meetingroom_id = #{meetingRoomId}
+    </delete>
+
+    <update id="update" parameterType="meetingRoom">
+        update meetingroom set meetingroom_name = #{meetingroom_name}, position_floor = #{position_floor},
+                               position_room = #{position_room}, number = #{number}, equipment = #{equipment}
+        where meetingroom_id = #{meetingroom_id}
+    </update>
+
+    <insert id="save" parameterType="meetingRoom">
+        insert into meetingroom(meetingroom_name, position_floor, position_room, number, equipment)
+        values(#{meetingroom_name}, #{position_floor}, #{position_room}, #{number}, #{equipment})
+    </insert>
+
+</mapper>

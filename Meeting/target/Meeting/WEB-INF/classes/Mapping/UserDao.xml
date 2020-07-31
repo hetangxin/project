@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meeting.dao.UserDao">
+
+    <select id="findAll" resultType="user">
+        select * from user
+    </select>
+
+    <select id="findById" resultType="user">
+        select * from user where userid = #{userId}
+    </select>
+
+    <select id="findByDeptId" resultType="user">
+        select * from user where dept_id = #{deptId}
+    </select>
+
+    <select id="findByDeptIdAndLeader" resultType="user">
+        select * from user where dept_id = #{deptId} and type = '1'
+    </select>
+
+    <delete id="delete">
+        delete from user where userid = #{userId}
+    </delete>
+
+    <insert id="save" parameterType="user" useGeneratedKeys="true" keyProperty="userId">
+        insert into user(username, sex, email, dept_id, type)
+        values(#{userName}, #{sex}, #{email}, #{dept_id}, #{type})
+    </insert>
+
+    <update id="update" parameterType="user">
+        update user set username = #{userName}, sex = #{sex},
+                        email = #{email}, dept_id = #{dept_id},
+                        password = #{password}, type = #{type}
+        where userid = #{userId}
+    </update>
+
+</mapper>

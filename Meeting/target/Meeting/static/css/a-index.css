@@ -1,0 +1,27 @@
+@charset "UTF-8";
+#ad_nav_name_e{
+	position: relative;
+	opacity: 0.7;
+}
+#ad_nav_name_e:hover{
+	opacity: 1;
+}
+#ad_nav_name_e svg{
+	width: 26px;
+	padding: 0;
+	/* margin-right: -10px; */
+	margin-left: -15px;
+}
+#ad_nav_name_e  span{
+	font-size: 12px;
+	position: absolute;
+	bottom: 9px;
+	right: 9px;
+	color: #000000d7;
+}
+.swiper-slide{
+	position: relative;
+}
+.swiper-slide .bigPic{
+	position: absolute;
+}
